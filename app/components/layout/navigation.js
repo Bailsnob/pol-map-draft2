@@ -15,6 +15,12 @@ export default function Navigation() {
           <li>
             <Link href="/login" className={styles["nav-length"]}>Sign In</Link>
           </li>
+          <li>
+            <Link href="/about" className={styles["nav-length"]}>About</Link>
+          </li>
+          <li>
+            <Link href="/documentation" className={styles["nav-length"]}>Documentation</Link>
+          </li>
         </ul>
       </nav>
     </header>
