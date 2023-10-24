@@ -1,4 +1,14 @@
 import styles from "./settings.module.css";
+import { useState, createContext, useEffect, useRef } from "react";
+
+const statesInputRef = useRef();
+const minDateInputRef = useRef();
+const maxDateInputRef = useRef();
+const minMovInputRef = useRef();
+const maxMovInputRef = useRef();
+const movMoeInputRef = useRef();
+const dateMoeInputRef = useRef();
+const submissionRef = useRef();
 
 export default function Settings() {
   return (
@@ -18,6 +28,7 @@ export default function Settings() {
             id="state-restriction"
             data-bs-toggle="tooltip"
             title="What states do you want to use?"
+            ref={statesInputRef}
             multiple
           >
             {/* <!-- <option selected>Winner</option> --> */}
@@ -93,6 +104,7 @@ export default function Settings() {
               placeholder="Date"
               data-bs-toggle="tooltip"
               title="When is the lowest date you want to use?"
+              ref={minDateInputRef}
             />
           </div>
           <label for="date-maximum" class="form-label">
@@ -112,6 +124,7 @@ export default function Settings() {
               placeholder="Date"
               data-bs-toggle="tooltip"
               title="When is the highest date you want to use?"
+              ref={maxDateInputRef}
             />
           </div>
         </div>
@@ -131,6 +144,7 @@ export default function Settings() {
               placeholder="MOV"
               data-bs-toggle="tooltip"
               title="What is the lowest margin of victory you want to use?"
+              ref={minMovInputRef}
             />
           </div>
           <label for="MOV-maximum" class="form-label">
@@ -148,6 +162,7 @@ export default function Settings() {
               placeholder="MOV"
               data-bs-toggle="tooltip"
               title="What is the highest margin of victory you want to use?"
+              ref={maxMovInputRef}
             />
           </div>
         </div>
@@ -169,6 +184,7 @@ export default function Settings() {
               placeholder="MOE"
               data-bs-toggle="tooltip"
               title="How far should your margin of victory guess be from the correct answer to be accepted?"
+              ref={movMoeInputRef}
             />
           </div>
         </div>
@@ -188,12 +204,13 @@ export default function Settings() {
               placeholder="MOE"
               data-bs-toggle="tooltip"
               title="How far should your date guess be from the correct answer to be accepted?"
+              ref={dateMoeInputRef}
             />
           </div>
         </div>
         <br />
         <div class="col-6">
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" ref={submissionRef}>
             Submit
           </button>
         </div>
@@ -201,3 +218,14 @@ export default function Settings() {
     </div>
   );
 }
+
+export const submission = createContext({
+  chosenStates: statesInputRef,
+  minDate: minDateInputRef,
+  maxDate: maxDateInputRef,
+  minMov: minMovInputRef,
+  maxMov: maxMovInputRef,
+  movMoe: movMoeInputRef,
+  dateMoe: dateMoeInputRef,
+  isSubmitted: submissionRef
+});
