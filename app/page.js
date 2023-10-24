@@ -7,7 +7,7 @@ import Guess from "./components/ui/guess";
 import { useContext, useRef } from "react";
 
 export default function Home() {
-  const {isSubmitted} = useContext()
+  // const {isSubmitted} = useContext()
 
   return (
     <div className={styles.gridContainer}>
